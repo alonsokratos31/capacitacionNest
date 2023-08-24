@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  capacitacionapp:
+    build:  # de donde se creara la imagen
+      context: .
+      dockerfile: Dockerfile # el archivo que tomara como base para su creacion
+    image: capacitacion-docker
+    container_name: capacitacionapp
+    restart: always # reiniciar el contenedor si se detiene
+    ports:
+      - 3001:3001 # los puertos donde se ejecutara la aplicacion => debe coincidir con el de la aplicacion
+  db:
+    image: postgres:14.3 ## tomara como base la imagen de postgres version 14.3 para construir y levantar el contenedor. 
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: Teo36636%%==
+      POSTGRES_DB: capacitaciones
+    container_name: paisDb
+    volumes:
+      - ./postgres:/var/lib/postgresql/data # Son como discos duros virtuales administrados por Docker
