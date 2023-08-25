@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PoblacionesService } from './poblaciones.service';
 import { CreatePoblacioneDto } from './dto/create-poblacione.dto';
 import { UpdatePoblacioneDto } from './dto/update-poblacione.dto';
@@ -23,7 +31,10 @@ export class PoblacionesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePoblacioneDto: UpdatePoblacioneDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePoblacioneDto: UpdatePoblacioneDto,
+  ) {
     return this.poblacionesService.update(+id, updatePoblacioneDto);
   }
 
